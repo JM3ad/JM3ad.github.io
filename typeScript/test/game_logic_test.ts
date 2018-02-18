@@ -11,7 +11,7 @@ describe('createNewSpecies function', () => {
     it('should have default stats', () => {
         const species = game.createNewSpecies();
         expect(species.stats).to.deep.equal(game.getDefaultStats());
-    })
+    }) 
 })
 
 describe('game', () => {

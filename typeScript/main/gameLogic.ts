@@ -1,3 +1,5 @@
+import { ScreenUpdater } from "./screenUpdater";
+
 class Stats {
     constructor(public speed: number, public size: number, public foodPerPop: number) { }
 }
@@ -25,6 +27,8 @@ export class Species {
 
 export class Game {
     species: Species[];
+    screenUpdater: ScreenUpdater;
+
     constructor(numberOfSpecies: number) {
         this.species = new Array<Species>(numberOfSpecies);
         for (let i = 0; i < numberOfSpecies; i++) {
@@ -42,6 +46,7 @@ export class Game {
         if (false) {
             //Deal with dead species
         }
+        this.screenUpdater.update(this.species);
     }
 
     updatePopulations(food: number) {
