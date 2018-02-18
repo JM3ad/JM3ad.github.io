@@ -7,5 +7,6 @@
     "outDir": "scripts",
     "rootDir": "typeScript"
   },
-  "exclude": [ "scripts/test/*" ]
+  "exclude": [ "typeScript/test/*" ],
+  "include": [ "node_modules/types/*.ts" ]
 }
