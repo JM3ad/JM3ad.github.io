@@ -3,11 +3,13 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "sourceMap": true,
     "module": "commonjs",
     "target": "ES5",
-    "outDir": "scripts",
-    "rootDir": "typeScript"
+    "outDir": "./dist/",
+    "rootDir": "./src/"
   },
-  "exclude": [ "typeScript/test/*" ],
-  "include": [ "node_modules/types/*.ts" ]
+  "exclude": [ "src/test/*" ],
+  "include": [ "./node_modules/types/*.ts", "src/**/*.ts" ]
 }

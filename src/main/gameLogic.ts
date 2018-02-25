@@ -10,14 +10,14 @@ class Feature {
 
 export class Species {
     constructor(public stats: Stats, public populationSize: number, public features: Feature[]) { }
-
-    getGatherRate() {
+    
+    getGatherRatePerPop() {
         return this.stats.speed;
     }
-    getHuntRate() {
+    getHuntRatePerPop() {
         return this.stats.speed;
     }
-    getSurvivalRate() {
+    getSurvivalRatePerPop() {
         return this.stats.speed;
     }
     updatePopulation(food: number) {
@@ -27,7 +27,6 @@ export class Species {
 
 export class Game {
     species: Species[];
-    screenUpdater: ScreenUpdater;
 
     constructor(numberOfSpecies: number) {
         this.species = new Array<Species>(numberOfSpecies);
@@ -36,22 +35,21 @@ export class Game {
         }
     };
 
-    startGame() {
+    public startGame = () => {
         setInterval(this.tick, 1000);
     }
 
-    tick() {
-        let food = this.getTotalFood();
+    public tick = ()=> {
+        const food = this.getTotalFood();
         this.updatePopulations(food);
         if (false) {
             //Deal with dead species
         }
-        this.screenUpdater.update(this.species);
     }
 
-    updatePopulations(food: number) {
+    updatePopulations(totalFood: number) {
         let totalGatherRate = this.getTotalGatherRate();
-        this.species.forEach((species) => { species.updatePopulation(species.getGatherRate() / totalGatherRate) });
+        this.species.forEach((species) => { species.updatePopulation(totalFood * species.getGatherRatePerPop() / totalGatherRate) });
     }
 
     getTotalFood() {
@@ -60,7 +58,7 @@ export class Game {
 
     getTotalGatherRate() {
         let total = 0;
-        this.species.forEach((species) => { total += species.getGatherRate() });
+        this.species.forEach((species) => { total += species.getGatherRatePerPop() });
         return total;
     }
 }
