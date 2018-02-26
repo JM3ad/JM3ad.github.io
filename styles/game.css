@@ -8,9 +8,6 @@
   display: flex;
   width: 25%;
   background-color: white;
-  border: solid;
-  margin: 2px;
-  padding: 2px;
 }
 .species-box {
   display: flex;
@@ -21,11 +18,4 @@
   border: solid;
   margin: 2px;
   padding: 2px;
-}
-#game-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-body {
-  background-color: aliceblue;
 }

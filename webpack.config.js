@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/main/main.ts',
+  entry: './src/index.tsx',
   devtool: 'inline-source-map',
   watch: true,
   module: {
@@ -19,5 +19,9 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
+  },
+  externals: {
+      "react": "React",
+      "react-dom": "ReactDOM"
   }
 };

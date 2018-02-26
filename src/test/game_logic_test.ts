@@ -2,16 +2,11 @@ import * as game from './../main/gameLogic';
 import {expect} from 'chai';
 import 'mocha';
 
-describe('createNewSpecies function', () => {
-    it('should return a species', ()=>{
-        const species = game.createNewSpecies();
+describe('getDefaultSpecies function', () => {
+    it('should return a species', () => {
+        const species = game.getDefaultSpecies();
         expect(species).to.be.instanceOf(game.Species);
     })
-
-    it('should have default stats', () => {
-        const species = game.createNewSpecies();
-        expect(species.stats).to.deep.equal(game.getDefaultStats());
-    }) 
 })
 
 describe('game', () => {
@@ -36,7 +31,7 @@ describe('game', () => {
 
 describe('gather rate', () => {
     it('should depend on speed', () => {
-        const species = new game.Species(game.getDefaultStats(), 2, []);
+        const species = game.getDefaultSpecies();
         const initialGatherRate = species.getGatherRatePerPop();
         species.stats.speed *= 10;
         const latterGatherRate = species.getGatherRatePerPop();
@@ -46,8 +41,8 @@ describe('gather rate', () => {
 
 describe('population size', () => {
     it('should depend on food per pop', () => {
-        const firstSpecies = new game.Species(game.getDefaultStats(), 2, []);
-        const secondSpecies = new game.Species(game.getDefaultStats(), 2, []);
+        const firstSpecies = game.getDefaultSpecies();
+        const secondSpecies = game.getDefaultSpecies();
         secondSpecies.stats.foodPerPop *= 2;
         firstSpecies.updatePopulation(10);
         secondSpecies.updatePopulation(10);
@@ -62,5 +57,14 @@ describe('population size', () => {
         speciesA.stats.speed *= 10;
         twoPlayer.updatePopulations(food);
         expect(speciesA.populationSize / speciesA.getGatherRatePerPop()).to.equal(speciesB.populationSize / speciesB.getGatherRatePerPop());
+    })
+})
+
+describe('dna', () => {
+    it('should increase when population eats', () => {
+        const speciesA = game.getDefaultSpecies();
+        const initialDna = speciesA.dna;
+        speciesA.updatePopulation(10);
+        expect(speciesA.dna).to.be.greaterThan(initialDna);
     })
 })
