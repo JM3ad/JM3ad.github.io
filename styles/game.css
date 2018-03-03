@@ -7,7 +7,11 @@
 #news-feed-container {
   display: flex;
   width: 25%;
+  height: 50%;
   background-color: white;
+  border: solid;
+  margin: 2px;
+  padding: 2px;
 }
 .species-box {
   display: flex;
@@ -18,4 +22,19 @@
   border: solid;
   margin: 2px;
   padding: 2px;
+}
+.population-row {
+  display: inline-flex;
+}
+.label {
+  width: 22%;
+}
+.value {
+  width: 22%;
+}
+.buy {
+  width: 22%;
+}
+.sell {
+  width: 22%;
 }

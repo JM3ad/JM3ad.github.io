@@ -1,4 +1,6 @@
-#species-container{
+@background: rgba(255,255,255,0.5);
+
+#game-sections-container{
     display: flex;
     flex-wrap: wrap;
     width: 70%;
@@ -8,10 +10,25 @@
 #news-feed-container {
     display: flex;
     width: 25%;
-    background-color: white;
+    min-height: 600px;
+    background-color: @background;
     border: solid;
     margin: 2px;
     padding: 2px;
+}
+
+#species-header{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#name-box{
+    min-width: 200px;
+}
+
+#stats-box{
+
 }
 
 .species-box {
@@ -19,16 +36,29 @@
     flex-direction: column;
     min-width: 400px;
     min-height: 250px;
-
-    background-color:white;
-
+    background-color: @background;
     border: solid;
     margin: 2px;
     padding: 2px;
 }
 
-.stats-box {
+.value-display {
+    display: flex;
+    min-width: 200px;
 }
 
-.population-box {
+.label{
+    width: 50%;
+}
+
+.value{
+    width: 50%;
+}
+
+.buy{
+    width: 22%;
+}
+
+.sell{
+    width: 22%;
 }
