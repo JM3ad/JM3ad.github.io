@@ -1,6 +1,7 @@
 import * as React from "react";
 import { SpeciesBox } from "./GameComponents/SpeciesBox";
 import { SpeciesHeader } from "./GameComponents/SpeciesHeader";
+import { NewsFeed } from "./GameComponents/NewsFeed";
 import { Game } from "../logic/game";
 
 export interface GameAreaProps { }
@@ -19,7 +20,7 @@ export class GameArea extends React.Component<GameAreaProps, GameAreaState>{
     }
 
     componentDidMount() {
-        this.setState({ interval: window.setInterval(this.tick, 1000) })
+        this.setState({ interval: window.setInterval(this.tick, 400) })
     }
 
     componentWillUnmount() {
@@ -38,7 +39,7 @@ export class GameArea extends React.Component<GameAreaProps, GameAreaState>{
                 <div id="game-sections-container">
                     <SpeciesBox species={this.state.game.species} />
                 </div>
-                <div id="news-feed-container"></div>
+                <NewsFeed game={this.state.game}/>
             </div>
         );
     }

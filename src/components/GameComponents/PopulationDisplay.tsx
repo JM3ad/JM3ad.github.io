@@ -8,7 +8,7 @@ export class PopulationDisplay extends React.Component<{population: number}> {
 
     render() {
         return (
-            <div className="value-display">
+            <div className="header-value-display">
                 <div className="label">Population: </div>
                 <div className="value" id="population">{this.props.population}</div>
             </div>

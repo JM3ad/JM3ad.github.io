@@ -1,14 +1,15 @@
-@background: rgba(255,255,255,0.5);
+@background: rgba(255,255,255,0.3);
 
 #game-sections-container{
     display: flex;
     flex-wrap: wrap;
     width: 70%;
-    min-width: 600px;
+    min-width: 250px;
 }
 
 #news-feed-container {
     display: flex;
+    flex-direction: column;
     width: 25%;
     min-height: 600px;
     background-color: @background;
@@ -34,17 +35,34 @@
 .species-box {
     display: flex;
     flex-direction: column;
-    min-width: 400px;
+    width: 400px;
+    min-width: 250px;
     min-height: 250px;
+    height: 250px;
     background-color: @background;
     border: solid;
     margin: 2px;
     padding: 2px;
 }
 
-.value-display {
+.header-value-display {
     display: flex;
     min-width: 200px;
+}
+
+.stat-row, .stat-header-row{
+    display: flex;
+    width: 100%;
+}
+
+.value-display{
+    display: flex;
+    width: 55%;
+}
+
+.purchases{
+    display: flex;
+    width: 40%;
 }
 
 .label{
@@ -56,9 +74,11 @@
 }
 
 .buy{
-    width: 22%;
+    width: 50%;
+    text-align: right;
 }
 
 .sell{
-    width: 22%;
+    width: 50%;
+    text-align: right;
 }

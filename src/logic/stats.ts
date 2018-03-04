@@ -32,23 +32,28 @@ export class Stat {
     private gatherMultiplier: number;
     private huntMultiplier: number;
     private consumptionMultiplier: number;
+    private costMultiplier: number;
 
-    constructor(name: string, survivalMultiplier?: number, gatherMultiplier?: number, huntMultiplier?: number, consumptionMultiplier?: number) {
+    constructor(name: string, survivalMultiplier?: number, gatherMultiplier?: number, huntMultiplier?: number, consumptionMultiplier?: number, costMultiplier?: number) {
         this.name = name;
-        this.survivalMultiplier = survivalMultiplier || 0;
-        this.gatherMultiplier = gatherMultiplier || 0;
-        this.huntMultiplier = huntMultiplier || 0;
-        this.consumptionMultiplier = consumptionMultiplier || 0;
+        this.survivalMultiplier = survivalMultiplier || 1;
+        this.gatherMultiplier = gatherMultiplier || 1;
+        this.huntMultiplier = huntMultiplier || 1;
+        this.consumptionMultiplier = consumptionMultiplier || 1;
+        this.costMultiplier = costMultiplier || 1.5;
         this.cost = 1;
         this.value = 1;
     }
 
     increase() {
         this.value++;
-        this.updateCost();
+        this.increaseCost();
     }
 
-    decrease() { this.value--; }
+    decrease() {
+        this.value--;
+        this.decreaseCost();
+    }
 
     getCost() { return this.cost; }
 
@@ -63,14 +68,19 @@ export class Stat {
     getGatherMultiplier() { return this.gatherMultiplier; }
 
     getConsumptionMultiplier() { return this.consumptionMultiplier; }
+    
+    increaseCost() {
+        this.cost = Math.ceil(this.cost * this.costMultiplier);
+    }
 
-    //Decide how cost should increase
-    updateCost() { Math.ceil(this.cost * 1.2); }
+    decreaseCost() {
+        this.cost = Math.ceil(this.cost / this.costMultiplier);
+    }
 }
 
 export function getDefaultStats() {
     const stats = new Stats();
-    stats.addStat(new Stat("Speed", 1, 1, 1, 0.2));
-    stats.addStat(new Stat("Size", -1, 0.5, 0.5, 1));
+    stats.addStat(new Stat("Speed", 1.2, 1.2, 1.2, 1.02));
+    stats.addStat(new Stat("Size", 0.8, 1.1, 1.4, 1.2));
     return stats;
 }

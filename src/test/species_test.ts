@@ -53,14 +53,3 @@ describe('food per population', () => {
         expect(initialConsumptionRate).to.be.lessThan(updatedConsumptionRate);
     })
 })
-
-describe('dna', () => {
-
-    it('should increase when population updates', () => {
-        const species = getDefaultSpecies();
-        const initialDna = species.dna;
-        species.updatePopulation(10);
-        const updatedDna = species.dna;
-        expect(initialDna).to.be.lessThan(updatedDna)
-    })
-})
