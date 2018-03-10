@@ -10,25 +10,6 @@ describe('getDefaultSpecies function', () => {
     })
 })
 
-describe('updateSpecies', () => {
-
-    it('should update dna', () => {
-        const game = new Game();
-        const initialDna = game.species.dna;
-        game.updateSpecies(10);
-        const updatedDna = game.species.dna;
-        expect(initialDna).to.be.lessThan(updatedDna)
-    })
-
-    it('should update population', () => {
-        const game = new Game();
-        const initialPopulation = game.species.populationSize;
-        game.updateSpecies(1000);
-        const updatedPopulation = game.species.populationSize;
-        expect(initialPopulation).to.be.lessThan(updatedPopulation);
-    })
-})
-
 describe('game logs',()=>{
     it('should add messages to the front of the logs', () => {
         const game = new Game();

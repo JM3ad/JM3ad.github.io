@@ -1,3 +1,5 @@
+import { Rates } from "./rates";
+
 export class Stats {
     stats: Stat[];
     constructor() {
@@ -28,21 +30,15 @@ export class Stat {
     private name: string;
     private cost: number;
     private value: number;
-    private survivalMultiplier: number;
-    private gatherMultiplier: number;
-    private huntMultiplier: number;
-    private consumptionMultiplier: number;
+    private rates: number[];
     private costMultiplier: number;
 
-    constructor(name: string, survivalMultiplier?: number, gatherMultiplier?: number, huntMultiplier?: number, consumptionMultiplier?: number, costMultiplier?: number) {
+    constructor(name: string, rates: number[], costMultiplier?: number) {
         this.name = name;
-        this.survivalMultiplier = survivalMultiplier || 1;
-        this.gatherMultiplier = gatherMultiplier || 1;
-        this.huntMultiplier = huntMultiplier || 1;
-        this.consumptionMultiplier = consumptionMultiplier || 1;
-        this.costMultiplier = costMultiplier || 1.5;
+        this.rates = rates;
+        this.costMultiplier = costMultiplier || 4;
         this.cost = 1;
-        this.value = 1;
+        this.value = 0;
     }
 
     increase() {
@@ -61,13 +57,12 @@ export class Stat {
 
     getName() { return this.name; }
 
-    getSurvivalMultiplier() { return this.survivalMultiplier; }
-
-    getHuntMultiplier() { return this.huntMultiplier; }
-
-    getGatherMultiplier() { return this.gatherMultiplier; }
-
-    getConsumptionMultiplier() { return this.consumptionMultiplier; }
+    getRateEffect(rate: Rates) {
+        if (this.rates[rate]) {
+            return this.rates[rate];
+        }
+        return 1;
+    }
     
     increaseCost() {
         this.cost = Math.ceil(this.cost * this.costMultiplier);
@@ -80,7 +75,9 @@ export class Stat {
 
 export function getDefaultStats() {
     const stats = new Stats();
-    stats.addStat(new Stat("Speed", 1.2, 1.2, 1.2, 1.02));
-    stats.addStat(new Stat("Size", 0.8, 1.1, 1.4, 1.2));
+    const browsingRates = [];
+    browsingRates[Rates.Gather] = 1.15;
+    browsingRates[Rates.Dying] = 1.0001;
+    stats.addStat(new Stat("Browsing", browsingRates));
     return stats;
 }

@@ -2,13 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   width: 70%;
-  min-width: 600px;
+  min-width: 250px;
 }
 #news-feed-container {
   display: flex;
+  flex-direction: column;
   width: 25%;
   min-height: 600px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
   border: solid;
   margin: 2px;
   padding: 2px;
@@ -24,9 +25,11 @@
 .species-box {
   display: flex;
   flex-direction: column;
-  min-width: 400px;
+  width: 400px;
+  min-width: 250px;
   min-height: 250px;
-  background-color: rgba(255, 255, 255, 0.5);
+  height: 250px;
+  background-color: rgba(255, 255, 255, 0.3);
   border: solid;
   margin: 2px;
   padding: 2px;
@@ -35,8 +38,18 @@
   display: flex;
   min-width: 200px;
 }
+.stat-row,
+.stat-header-row {
+  display: flex;
+  width: 100%;
+}
+.value-display {
+  display: flex;
+  width: 55%;
+}
 .purchases {
-  width: 30%;
+  display: flex;
+  width: 40%;
 }
 .label {
   width: 50%;
@@ -45,8 +58,10 @@
   width: 50%;
 }
 .buy {
-  width: 22%;
+  width: 50%;
+  text-align: right;
 }
 .sell {
-  width: 22%;
+  width: 50%;
+  text-align: right;
 }

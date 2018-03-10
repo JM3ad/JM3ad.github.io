@@ -27,23 +27,20 @@ describe('gather rate', () => {
 
 describe('population', () => {
 
-    it('should depend on food per pop', () => {
+    it('should increase when food reaches 50', () => {
         const species = getDefaultSpecies();
-        const food = 10;
+        const initialPop = species.populationSize;
+        species.food = 20;
+        species.updatePopulation();
+        expect(species.populationSize).to.equal(initialPop);
 
-        species.getConsumptionRate = () => { return 1 };
-        species.updatePopulation(food);
-        const initialPopulation = species.populationSize;
-
-        species.getConsumptionRate = () => { return 10 };
-        species.updatePopulation(food);
-        const updatedPopulation = species.populationSize;
-
-        expect(initialPopulation).to.be.greaterThan(updatedPopulation);
+        species.food = 50;
+        species.updatePopulation();
+        expect(species.populationSize).to.be.greaterThan(initialPop);
     })
 })
 
-describe('food per population', () => {
+describe('consumption rate', () => {
 
     it('should depend on size', () => {
         const species = getDefaultSpecies();

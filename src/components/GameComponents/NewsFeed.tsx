@@ -8,7 +8,7 @@ export class NewsFeed extends React.Component<{ game: Game }>{
     }
 
     render() {
-        const messages = this.props.game.getLogMessages();
+        const messages = this.props.game.log.messages;
         let messageElements = []
         messages.forEach((message, index) => {
             messageElements.push(

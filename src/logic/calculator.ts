@@ -1,27 +1,10 @@
 import { Stats, Stat } from "./stats";
+import { Rates } from "./rates";
 
-export function gatherRateCalculator(stats: Stats) {
-    return RateCalculator(stats, (Stat) => Stat.getGatherMultiplier());
-}
-
-export function survivalRateCalculator(stats: Stats) {
-    return RateCalculator(stats, (Stat) => Stat.getSurvivalMultiplier());
-
-}
-
-export function huntRateCalculator(stats: Stats) {
-    return RateCalculator(stats, (Stat) => Stat.getHuntMultiplier());
-
-}
-
-export function consumptionRateCalculator(stats: Stats) {
-    return RateCalculator(stats, (Stat) => Stat.getConsumptionMultiplier());
-}
-
-function RateCalculator(stats: Stats, func: (stat: Stat) => number) {
+export function rateCalculator(stats: Stats, rate : Rates) {
     let defaultRate = 1;
     stats.stats.forEach(stat => {
-        defaultRate *= Math.pow(func(stat), stat.getValue());
+        defaultRate *= Math.pow(stat.getRateEffect(rate), stat.getValue());
     })
-    return defaultRate;
+    return defaultRate-1;
 }

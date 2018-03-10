@@ -1,6 +1,8 @@
 import * as React from "react";
 import { SpeciesBox } from "./GameComponents/SpeciesBox";
 import { SpeciesHeader } from "./GameComponents/SpeciesHeader";
+import { DnaBox } from "./GameComponents/DnaBox";
+import { GatherButton } from "./GameComponents/GatherButton";
 import { NewsFeed } from "./GameComponents/NewsFeed";
 import { Game } from "../logic/game";
 
@@ -33,11 +35,14 @@ export class GameArea extends React.Component<GameAreaProps, GameAreaState>{
     }
 
     render() {
+        const species = this.state.game.species;
         return (
             <div id="game-container">
-                <SpeciesHeader species={this.state.game.species} />
+                <SpeciesHeader species={species} />
                 <div id="game-sections-container">
-                    <SpeciesBox species={this.state.game.species} />
+                    <SpeciesBox species={species} />
+                    <GatherButton species={species} />
+                    <DnaBox species={species} />
                 </div>
                 <NewsFeed game={this.state.game}/>
             </div>
