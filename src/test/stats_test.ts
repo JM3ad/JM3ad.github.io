@@ -2,15 +2,6 @@ import * as stats from './../logic/stats';
 import { expect } from 'chai';
 import 'mocha';
 
-describe('getDefaultStats function', () => {
-    const defaultStats = stats.getDefaultStats();
-
-    it('should have a speed stat', () => {
-        const speed = defaultStats.getStat("Speed");
-        expect(speed).to.be.instanceOf(stats.Stat);
-    })
-})
-
 describe('stats increase method', () => {
 
     it('should have value increase by one', () => {
