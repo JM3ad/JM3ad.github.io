@@ -1,9 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-
-import { Root } from "./components/Root";
+import { SuperRoot } from "./SuperRoot";
 
 ReactDOM.render(
-    <Root/>,
+    <SuperRoot/>,
     document.getElementById("react-root")
 );
