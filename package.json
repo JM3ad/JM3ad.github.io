@@ -25,7 +25,7 @@
     "webpack-provide-global-plugin": "0.0.1"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register ./src/test/*.ts"
+    "test": "mocha -r ts-node/register ./src/**/*_test.ts"
   },
   "repository": {
     "type": "git",

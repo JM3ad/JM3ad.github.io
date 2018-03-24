@@ -7,6 +7,7 @@ import { Unlocker } from "./unlocker";
 import { Rates } from "./rates";
 import { Event } from "./event";
 import { Log } from "./log";
+import {Config} from "./config";
 import * as Calculator from "./calculator";
 
 export class Species {
@@ -18,7 +19,7 @@ export class Species {
     log: Log;
 
     constructor(public stats: Stats, public populationSize: number, public features: Feature[], log: Log) {
-        this.dna = 3000;
+        this.dna = Config.StartingDna;
         this.food = 0;
         this.name = new NameGenerator().getName();
         this.statUnlocker = getStatUnlocker();
@@ -57,8 +58,8 @@ export class Species {
 
     updatePopulation() {
         this.populationSize += this.getPopulationIncreaseRate();
-        this.populationSize += Math.floor(this.food / 50);
-        this.food %= 50;
+        this.populationSize += Math.floor(this.food / Config.FoodPerBirth);
+        this.food %= Config.FoodPerBirth;
     }
 
     increaseDna(amount: number) {
@@ -96,5 +97,5 @@ export class Species {
 }
 
 export function getDefaultSpecies(log: Log) {
-    return new Species(getDefaultStats(), 2, [], log);
+    return new Species(getDefaultStats(), Config.StartingPop, [], log);
 }

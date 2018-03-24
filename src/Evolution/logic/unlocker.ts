@@ -6,7 +6,7 @@ export class Unlocker<T> {
         let itemsToReturn = [];
         let itemsToKeep = [];
         this.unlockables.forEach(unlockable => {
-            if (unlockable.dnaToUnlock) {
+            if (unlockable.dnaToUnlock<=dna) {
                 itemsToReturn.push(unlockable.item);
                 return;
             }
