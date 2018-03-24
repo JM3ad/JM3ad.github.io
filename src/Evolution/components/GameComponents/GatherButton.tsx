@@ -12,7 +12,7 @@ export class GatherButton extends React.Component<SpeciesProps, {}> {
 
     render() {
         return (
-            <div className="btn" id="gather-button">
+            <div id="gather-button">
                 <button onClick={this.props.species.gatherFood}>GATHER FOOD</button>
             </div>
         );

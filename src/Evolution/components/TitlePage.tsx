@@ -16,7 +16,7 @@ export class TitlePage extends React.Component<TitleProps>{
                         EVOLUTION
                     </h2>
                 </div>
-                <button id="start-game-button" onClick={this.props.startGameHandler}>Start Game</button>
+                <button id="start-game-button" className="btn" onClick={this.props.startGameHandler}>Start Game</button>
             </div>
         );
     }

@@ -15,7 +15,7 @@ export class TitlePage extends React.Component<PageProps>{
                         Jack Mead
                     </h2>
                 </div>
-            <button id="evolution" onClick={this.props.loadEvolution}>Start Game</button>
+            <button className="btn" onClick={this.props.loadEvolution}>Start Game</button>
             </div>
         );
     }
